@@ -1,35 +1,25 @@
 package com.github.cidarosa.ms.produto.controller;
 
-import com.github.cidarosa.ms.produto.dto.ProdutoInputDTO;
-import com.github.cidarosa.ms.produto.dto.ProdutoResponseDTO;
-import com.github.cidarosa.ms.produto.entities.Produto;
+import com.github.cidarosa.ms.produto.dto.ProdutoDTO;
+import com.github.cidarosa.ms.produto.service.ProdutoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
 
+    @Autowired
+    private ProdutoService produtoService;
+
     @GetMapping
-    public ResponseEntity<List <ProdutoResponseDTO>> getProduto() {
-
-        List <ProdutoResponseDTO> dto = ProdutoResponseDTO.createMock();
-
-        return ResponseEntity.ok(dto);
-
+    public ResponseEntity<List<ProdutoDTO>> getAllProdutos(){
+        List <ProdutoDTO> list = produtoService.findAllProdutos();
+        return ResponseEntity.ok(list);
     }
-
-    @PostMapping
-    public ResponseEntity<ProdutoResponseDTO> createProduto(@RequestBody ProdutoInputDTO inputDTO){
-
-        ProdutoResponseDTO dto = new ProdutoResponseDTO(1l, inputDTO.getNome(), inputDTO.getDescricao(), inputDTO.getValor());
-
-        return ResponseEntity.created(null).body(dto);
-
-
-    }
-
 }
