@@ -1,7 +1,16 @@
 package com.github.cidarosa.ms.produto.entities;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +20,8 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-
 @Entity
-@Table (name = "tb_categoria")
+@Table(name = "tb_categoria")
 public class Categoria {
 
     @Id
@@ -21,8 +29,6 @@ public class Categoria {
     private Long id;
     private String nome;
 
-    //relacionamento
     @OneToMany(mappedBy = "categoria")
     private List<Produto> produtos = new ArrayList<>();
-
 }

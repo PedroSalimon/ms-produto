@@ -7,19 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class ValidationErrorDTO extends CustomErrorDTO{
+public class ValidationErrorDto extends CustomErrorDto {
 
-    private List <FieldMessageDTO> erros = new ArrayList<>();
+    private List<FieldMessageDto> errors = new ArrayList<>();
 
-    public ValidationErrorDTO (Instant timestamp, Integer status, String error, String path) {
+    public ValidationErrorDto(Instant timestamp, Integer status, String error, String path) {
         super(timestamp, status, error, path);
     }
 
-    //método para adicionar erros  à List
-    public void addError (String fieldName, String message) {
-        //remove error de campo duplicado
-        erros.removeIf(x -> x .getFieldName().equals(fieldName));
-        erros.add(new FieldMessageDTO(fieldName, message));
-    }
+    public void addError(String fieldName, String message){
+        errors.removeIf(x -> x.getFieldName().equals(fieldName));
 
+        errors.add(new FieldMessageDto(fieldName, message));
+    }
 }

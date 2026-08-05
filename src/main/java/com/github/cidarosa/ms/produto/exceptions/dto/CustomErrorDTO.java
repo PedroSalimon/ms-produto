@@ -9,8 +9,8 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+public class CustomErrorDto {
 
-public class CustomErrorDTO {
     private Instant timestamp;
     private Integer status;
     private String error;

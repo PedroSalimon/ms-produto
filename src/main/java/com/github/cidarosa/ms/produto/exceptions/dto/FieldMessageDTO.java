@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-
-public class FieldMessageDTO {
+public class FieldMessageDto {
 
     private String fieldName;
     private String message;
-
 }
