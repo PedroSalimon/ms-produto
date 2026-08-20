@@ -52,7 +52,7 @@ public class ProdutoService {
             produto = produtoRepository.save(produto);
             return new ProdutoResponseDTO(produto);
         } catch (DataIntegrityViolationException e) {
-            throw new DatabaseException("Não foi possível salvar produto. Categoria inexistente. ID: " + produtoDTO.getCategoria());
+            throw new DatabaseException("Não foi possível salvar produto. Categoria inexistente. ID: " + requestDTO.getCategoriaId());
         }
     }
 
