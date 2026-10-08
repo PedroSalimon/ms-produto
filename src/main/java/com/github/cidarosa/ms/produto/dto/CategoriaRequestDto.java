@@ -21,7 +21,6 @@ public class CategoriaRequestDto {
     private String nome;
 
     public CategoriaRequestDto(Categoria categoria) {
-        id = categoria.getId();
         nome = categoria.getNome();
     }
 }
